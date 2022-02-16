@@ -17,10 +17,14 @@
 ## Amend DESCRIPTION with dependencies read from package code parsing
 attachment::att_amend_desc()
 
+fusen::add_flat_template(template = "additional",
+                         flat_name = "business-logic")
+
 ## Add modules ----
 ## Create a module infrastructure in R/
 golem::add_module(name = "name_of_module1", with_test = TRUE) # Name of the module
 golem::add_module(name = "name_of_module2", with_test = TRUE) # Name of the module
+?fusen::add_flat_template
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

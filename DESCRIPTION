@@ -1,21 +1,31 @@
 Package: flights.dashboard
 Title: Flights Dashboard
 Version: 0.0.0.9000
-Authors@R: person('Guilherme', 'Pinto', email = 'glhrm@pm.me', role = c('cre', 'aut'))
-Description: Using {golem}, {fusen} and {shinydashboard} to create a dashboard based on a post by Emily Riederer.
+Authors@R: 
+    person("Guilherme", "Pinto", , "glhrm@pm.me", role = c("cre", "aut"))
+Description: Using {golem}, {fusen} and {shinydashboard} to create a
+    dashboard based on a post by Emily Riederer.
 License: MIT + file LICENSE
-Imports: 
-    config (>= 0.3.1),
-    golem (>= 0.3.2),
-    magrittr,
-    shiny (>= 1.7.1)
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1
-Suggests: 
-    spelling,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-Language: en-US
 URL: https://github.com/ggpinto/flights.dashboard
 BugReports: https://github.com/ggpinto/flights.dashboard/issues
+Imports: 
+    config (>= 0.3.1),
+    dplyr,
+    ggplot2,
+    glue,
+    golem (>= 0.3.2),
+    magrittr,
+    nycflights13,
+    R6,
+    shiny (>= 1.7.1),
+    stringr,
+    tibble
+Suggests: 
+    spelling,
+    testthat (>= 3.0.0),
+    vdiffr
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+RoxygenNote: 7.1.2
