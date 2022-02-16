@@ -13,6 +13,7 @@ editor_options:
 #' @description
 #' It does the data cleaning and generates text and chart for the app.
 #' @export
+#' @examples
 BusinessLogic <- R6::R6Class(
   "BusinessLogic",
   public = list(
@@ -49,7 +50,6 @@ BusinessLogic <- R6::R6Class(
     #' @param month_filter Month for report.
     #' @param metric_filter Metric for report.
     #' @param threshold Threshold for report.
-    #' @examples
     generate_results = function(
       carrier_filter,
       month_filter,
@@ -151,6 +151,6 @@ test_that("business_logic works", {
 fusen::inflate(
   flat_file = "dev/flat_business-logic.Rmd",
   vignette_name = NA,
-  check = TRUE
+  check = FALSE
 )
 ```

@@ -5,6 +5,7 @@
 #' @description
 #' It does the data cleaning and generates text and chart for the app.
 #' @export
+#' @examples
 BusinessLogic <- R6::R6Class(
   "BusinessLogic",
   public = list(
@@ -27,7 +28,6 @@ BusinessLogic <- R6::R6Class(
     #' @description
     #' Create a new business logic object.
     #' @return A new `BusinessLogic` object.
-#' @examples
 #' business_logic <- BusinessLogic$new()
 #' 
 #' business_logic$generate_results("9E", 1, "arr_delay", 30)
@@ -49,7 +49,6 @@ BusinessLogic <- R6::R6Class(
     #' @param month_filter Month for report.
     #' @param metric_filter Metric for report.
     #' @param threshold Threshold for report.
-    #' @examples
     generate_results = function(
       carrier_filter,
       month_filter,

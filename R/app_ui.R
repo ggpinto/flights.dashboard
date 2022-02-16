@@ -1,16 +1,19 @@
 #' The application User-Interface
 #'
-#' @param request Internal parameter for `{shiny}`.
-#'     DO NOT REMOVE.
-#' @import shiny
+#' @param request Internal parameter for `{shiny}`, do not remove!
+#' @import shiny shinydashboard
 #' @noRd
 app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      h1("flights.dashboard")
+    dashboardPage(
+      dashboardHeader(title = "flights.dashboard"),
+      dashboardSidebar(
+        mod_filters_ui("filters_1")
+      ),
+      dashboardBody()
     )
   )
 }

@@ -18,6 +18,7 @@ Imports:
     nycflights13,
     R6,
     shiny (>= 1.7.1),
+    shinydashboard,
     stringr,
     tibble
 Suggests: 
