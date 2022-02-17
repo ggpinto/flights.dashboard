@@ -10,17 +10,42 @@
 mod_filters_ui <- function(id){
   ns <- NS(id)
   tagList(
-    p("Hello from the filters module!")
+    selectInput(
+      ns("carrier"),
+      "Carrier:",
+      choices = NULL
+    ),
+    selectInput(
+      ns("month"),
+      "Month:",
+      choices = month.name
+    ),
+    selectInput(
+      ns("metric"),
+      "Metric:",
+      choices = NULL
+    ),
+    actionButton(
+      ns("render_report"),
+      "Render report"
+    )
   )
 }
 
 #' filters Server Functions
 #'
 #' @noRd
-mod_filters_server <- function(id){
+mod_filters_server <- function(id, r6){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
-
+    updateSelectInput(
+      inputId = "carrier",
+      choices = r6$unique_carriers$name
+    )
+    updateSelectInput(
+      inputId = "metric",
+      choices = r6$metrics
+    )
   })
 }
 

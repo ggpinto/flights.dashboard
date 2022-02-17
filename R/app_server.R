@@ -5,5 +5,8 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
-  # Your application server logic
+
+  business_logic <- BusinessLogic$new()
+
+  mod_filters_server("filters_1", business_logic)
 }
