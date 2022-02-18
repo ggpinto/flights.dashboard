@@ -6,7 +6,8 @@ Authors@R:
 Description: Using {golem}, {fusen} and {shinydashboard} to create a
     dashboard based on a post by Emily Riederer.
 License: MIT + file LICENSE
-URL: https://github.com/ggpinto/flights.dashboard
+URL: https://github.com/ggpinto/flights.dashboard,
+    https://ggpinto.github.io/flights.dashboard/
 BugReports: https://github.com/ggpinto/flights.dashboard/issues
 Imports: 
     R6,

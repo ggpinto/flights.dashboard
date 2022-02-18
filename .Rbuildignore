@@ -8,3 +8,7 @@ $run_dev.*
 ^README\.Rmd$
 ^CODE_OF_CONDUCT\.md$
 ^flights\.dashboard\.Rproj$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
