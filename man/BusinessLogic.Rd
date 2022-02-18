@@ -44,6 +44,8 @@ business_logic <- BusinessLogic$new()
 
 business_logic$generate_results("9E", 1, "arr_delay", 30)
 
+business_logic$results$title
+
 business_logic$results$text
 
 business_logic$results$chart

@@ -9,16 +9,19 @@ License: MIT + file LICENSE
 URL: https://github.com/ggpinto/flights.dashboard
 BugReports: https://github.com/ggpinto/flights.dashboard/issues
 Imports: 
+    R6,
     config (>= 0.3.1),
     dplyr,
+    gargoyle,
     ggplot2,
     glue,
     golem (>= 0.3.2),
     magrittr,
     nycflights13,
-    R6,
+    purrr,
     shiny (>= 1.7.1),
     shinydashboard,
+    shinyjs,
     stringr,
     tibble
 Suggests: 

@@ -84,6 +84,9 @@ BusinessLogic <- R6::R6Class(
         "arrivals"
       )
       
+      self$results$title <- "{month}: {carrier}" %>%
+        glue::glue()
+      
       self$results$text <- "In {month} {carrier} had {number_of_days} days with {metric} delayed by more than {threshold} minutes." %>%
         glue::glue()
       
@@ -92,7 +95,7 @@ BusinessLogic <- R6::R6Class(
         ggplot2::ggplot(ggplot2::aes(day, metric)) +
         ggplot2::geom_line(group = 1) +
         ggplot2::geom_hline(
-          yintercept = 30,
+          yintercept = threshold,
           lty = "dashed",
           color = "red"
         ) +
@@ -112,6 +115,8 @@ business_logic <- BusinessLogic$new()
 
 business_logic$generate_results("9E", 1, "arr_delay", 30)
 
+business_logic$results$title
+
 business_logic$results$text
 
 business_logic$results$chart
@@ -129,6 +134,9 @@ test_that("business_logic works", {
   expect_s3_class(business_logic, "BusinessLogic")
   
   expect_identical(business_logic$data, nycflights13::flights)
+  
+  expect_identical(business_logic$results$title,
+    "January: Endeavor Air")
   
   expect_identical(business_logic$results$text,
     "In January Endeavor Air had 16 days with arrivals delayed by more than 30 minutes.")

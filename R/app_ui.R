@@ -9,11 +9,14 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     dashboardPage(
+      skin = "red",
       dashboardHeader(title = "flights.dashboard"),
       dashboardSidebar(
         mod_filters_ui("filters_1")
       ),
-      dashboardBody()
+      dashboardBody(
+        mod_results_ui("results_1")
+      )
     )
   )
 }
@@ -38,7 +41,7 @@ golem_add_external_resources <- function() {
       path = app_sys("app/www"),
       app_title = "flights.dashboard"
     )
-    # Add here other external resources
-    # for example, you can add shinyalert::useShinyalert()
   )
+
+  shinyjs::useShinyjs()
 }

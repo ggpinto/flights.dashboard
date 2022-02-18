@@ -32,6 +32,8 @@ BusinessLogic <- R6::R6Class(
 #' 
 #' business_logic$generate_results("9E", 1, "arr_delay", 30)
 #' 
+#' business_logic$results$title
+#' 
 #' business_logic$results$text
 #' 
 #' business_logic$results$chart
@@ -83,6 +85,9 @@ BusinessLogic <- R6::R6Class(
         "arrivals"
       )
       
+      self$results$title <- "{month}: {carrier}" %>%
+        glue::glue()
+      
       self$results$text <- "In {month} {carrier} had {number_of_days} days with {metric} delayed by more than {threshold} minutes." %>%
         glue::glue()
       
@@ -91,7 +96,7 @@ BusinessLogic <- R6::R6Class(
         ggplot2::ggplot(ggplot2::aes(day, metric)) +
         ggplot2::geom_line(group = 1) +
         ggplot2::geom_hline(
-          yintercept = 30,
+          yintercept = threshold,
           lty = "dashed",
           color = "red"
         ) +

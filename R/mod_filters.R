@@ -7,7 +7,8 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_filters_ui <- function(id){
+#' @importFrom gargoyle trigger
+mod_filters_ui <- function(id) {
   ns <- NS(id)
   tagList(
     selectInput(
@@ -25,6 +26,14 @@ mod_filters_ui <- function(id){
       "Metric:",
       choices = NULL
     ),
+    sliderInput(
+      ns("threshold"),
+      "Threshold:",
+      min = 0,
+      max = 120,
+      value = 30,
+      step = 5
+    ),
     actionButton(
       ns("render_report"),
       "Render report"
@@ -35,17 +44,45 @@ mod_filters_ui <- function(id){
 #' filters Server Functions
 #'
 #' @noRd
-mod_filters_server <- function(id, r6){
-  moduleServer( id, function(input, output, session){
+mod_filters_server <- function(id, r6) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
+
     updateSelectInput(
       inputId = "carrier",
       choices = r6$unique_carriers$name
     )
+
     updateSelectInput(
       inputId = "metric",
       choices = r6$metrics
     )
+
+
+    observeEvent(
+      c(input$carrier, input$month, input$metric, input$threshold),
+      {
+        trigger("changed_filters")
+      }
+    )
+
+    observeEvent(input$render_report, {
+
+      # print(input$metric)
+
+      r6$generate_results(
+        carrier_filter = r6$unique_carriers %>%
+          dplyr::filter(name == input$carrier) %>%
+          dplyr::pull(carrier),
+        month_filter = r6$months %>%
+          dplyr::filter(month_name == input$month) %>%
+          dplyr::pull(month_number),
+        metric_filter = input$metric,
+        threshold = input$threshold
+      )
+
+      trigger("render_report")
+    })
   })
 }
 

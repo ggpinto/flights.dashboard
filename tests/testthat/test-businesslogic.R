@@ -12,6 +12,9 @@ test_that("business_logic works", {
   
   expect_identical(business_logic$data, nycflights13::flights)
   
+  expect_identical(business_logic$results$title,
+    "January: Endeavor Air")
+  
   expect_identical(business_logic$results$text,
     "In January Endeavor Air had 16 days with arrivals delayed by more than 30 minutes.")
   
