@@ -42,7 +42,7 @@ mod_filters_ui <- function(id) {
 }
 
 #' filters Server Functions
-#'
+#' @importFrom rlang .data
 #' @noRd
 mod_filters_server <- function(id, r6) {
   moduleServer(id, function(input, output, session) {
@@ -68,15 +68,13 @@ mod_filters_server <- function(id, r6) {
 
     observeEvent(input$render_report, {
 
-      # print(input$metric)
-
       r6$generate_results(
         carrier_filter = r6$unique_carriers %>%
-          dplyr::filter(name == input$carrier) %>%
-          dplyr::pull(carrier),
+          dplyr::filter(.data$name == input$carrier) %>%
+          dplyr::pull(.data$carrier),
         month_filter = r6$months %>%
-          dplyr::filter(month_name == input$month) %>%
-          dplyr::pull(month_number),
+          dplyr::filter(.data$month_name == input$month) %>%
+          dplyr::pull(.data$month_number),
         metric_filter = input$metric,
         threshold = input$threshold
       )
