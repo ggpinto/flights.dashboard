@@ -26,7 +26,7 @@ app_ui <- function(request) {
 #' This function is internally used to add external
 #' resources inside the Shiny application.
 #'
-#' @import shiny
+#' @import shiny shinyjs
 #' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
 golem_add_external_resources <- function() {
@@ -43,5 +43,5 @@ golem_add_external_resources <- function() {
     )
   )
 
-  shinyjs::useShinyjs()
+  useShinyjs()
 }

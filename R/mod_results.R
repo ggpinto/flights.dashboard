@@ -55,9 +55,12 @@ mod_results_server <- function(id, r6) {
       output$text_2 <- renderText(
         r6$results$text
       )
-      output$plot <- renderPlot({
-        r6$results$chart
-      }, res = 96)
+      output$plot <- renderPlot(
+        {
+          r6$results$chart
+        },
+        res = 96
+      )
       c("text_2", "plot") %>%
         purrr::map(shinyjs::show)
     })
