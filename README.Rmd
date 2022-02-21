@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 
 # flights.dashboard
 
+## Here is a picture
+
 ```{r test, fig.align = 'center', echo = FALSE}
-knitr::include_graphics(here::here("figs", "sunrise-19-freepsdbazaar.jpg"))
+knitr::include_graphics("https://raw.githubusercontent.com/ggpinto/flights.dashboard/main/figs/sunrise-19-freepsdbazaar.jpg")
 ```
