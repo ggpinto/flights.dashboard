@@ -5,7 +5,6 @@
 #' @description
 #' It does the data cleaning and generates text and chart for the app.
 #' @export
-#' @examples
 BusinessLogic <- R6::R6Class(
   "BusinessLogic",
   public = list(
@@ -24,10 +23,15 @@ BusinessLogic <- R6::R6Class(
     #' @field unique_carriers Available carriers.
     unique_carriers = NULL,
     #' @field results Where results are stored.
-    results = NULL,
+    results = list(
+      title = NULL,
+      text = NULL,
+      chart = NULL
+    ),
     #' @description
     #' Create a new business logic object.
     #' @return A new `BusinessLogic` object.
+#' @examples
 #' business_logic <- BusinessLogic$new()
 #' 
 #' business_logic$generate_results("9E", 1, "arr_delay", 30)

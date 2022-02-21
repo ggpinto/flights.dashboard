@@ -6,6 +6,22 @@
 \description{
 It does the data cleaning and generates text and chart for the app.
 }
+\examples{
+
+## ------------------------------------------------
+## Method `BusinessLogic$new`
+## ------------------------------------------------
+
+business_logic <- BusinessLogic$new()
+
+business_logic$generate_results("9E", 1, "arr_delay", 30)
+
+business_logic$results$title
+
+business_logic$results$text
+
+business_logic$results$chart
+}
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
@@ -40,7 +56,10 @@ Create a new business logic object.
 
 \subsection{Returns}{
 A new `BusinessLogic` object.
-business_logic <- BusinessLogic$new()
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{business_logic <- BusinessLogic$new()
 
 business_logic$generate_results("9E", 1, "arr_delay", 30)
 
@@ -50,6 +69,10 @@ business_logic$results$text
 
 business_logic$results$chart
 }
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-generate_results"></a>}}

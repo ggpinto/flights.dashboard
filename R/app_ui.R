@@ -9,7 +9,6 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     dashboardPage(
-      skin = "red",
       dashboardHeader(title = "flights.dashboard"),
       dashboardSidebar(
         mod_filters_ui("filters_1")
