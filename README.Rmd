@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 
 The goal of flights.dashboard is to apply some of what is explained on the fantastic book [Engineering Production-Grade Shiny Apps](https://engineering-shiny.org/) by Colin Fay, Sébastien Rochette, Vincent Guyader and Cervan Girard, using as basis the post [A beginner's guide to Shiny modules](https://emilyriederer.netlify.app/post/shiny-modules/) by Emily Riederer.
 
+See ["How this app/package was created?"](https://ggpinto.github.io/flights.dashboard/articles/flights-dashboard.html) for more details.
+
 ## Result
 
 The end result can be seen on https://ggpinto.shinyapps.io/flights/.

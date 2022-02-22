@@ -16,9 +16,27 @@ knitr::opts_chunk$set(
 
 ## Design
 
+### UX
+
+Excalidraw
+
+### Business logic
+
+Define what is needed
+
 ## Prototype
 
+### UX
+
+shinipsum, thematic (run_app!)
+
+### Business logic
+
+Rmd
+
 ## Build, strengthen and optimize
+
+golem, fusen (R6), gargoyle etc.
 
 ## Deploy
 

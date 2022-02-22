@@ -17,6 +17,10 @@ guide to Shiny
 modules](https://emilyriederer.netlify.app/post/shiny-modules/) by Emily
 Riederer.
 
+See [“How this app/package was
+created?”](https://ggpinto.github.io/flights.dashboard/articles/flights-dashboard.html)
+for more details.
+
 ## Result
 
 The end result can be seen on <https://ggpinto.shinyapps.io/flights/>.
