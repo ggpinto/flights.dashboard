@@ -8,29 +8,40 @@ editor_options:
 # Business logic of the app
 
 ```{r function-business_logic}
-#' R6 Class for the business logic of the app
+#' Business logic of the app
 #'
 #' @description
-#' It does the data cleaning and generates text and chart for the app.
+#' Responsible for the data wrangling, generation of text and charts and (it might be a bit of overkill in this app) filtering for the user interface. See [Using R6 as data storage](https://engineering-shiny.org/common-app-caveats.html#using-r6-as-data-storage) for more information on this solution.
+#' 
 #' @export
 BusinessLogic <- R6::R6Class(
   "BusinessLogic",
   public = list(
-    #' @field months Month numbers and their names.
-    months = tibble::tibble(
-      month_number = 1:12,
-      month_name = month.name
-    ),
-    #' @field metrics Available metrics.
+    #' @field months Month numbers and their names, on the app selecting the month's name will return the month's number.
+    months =   c(
+    "January" = 1,
+    "February" = 2,
+    "March" = 3,
+    "April" = 4,
+    "May" = 5,
+    "June" = 6,
+    "July" = 7,
+    "August" = 8,
+    "September" = 9,
+    "October" = 10,
+    "November" = 11,
+    "December" = 12
+  ),
+    #' @field metrics Available metrics with better looking names for the app.
     metrics = c(
       "Departure delay" = "dep_delay",
       "Arrival delay" = "arr_delay"
     ),
-    #' @field data Will store the data..
+    #' @field data Will store the data (more useful for bigger apps).
     data = NULL,
-    #' @field unique_carriers Available carriers.
+    #' @field unique_carriers Available carriers (more useful in the case of a database with more carriers being added over time).
     unique_carriers = NULL,
-    #' @field results Where results are stored.
+    #' @field results Where results (title and text for the page and the chart itself) are stored.
     results = list(
       title = NULL,
       text = NULL,
@@ -48,7 +59,7 @@ BusinessLogic <- R6::R6Class(
                         stringr::str_remove_all(" Corporation"))
     },
     #' @description
-    #' Generate results.
+    #' Generate results, all parameters come directly from the user interface of the app.
     #' @param carrier_filter Carrier for report.
     #' @param month_filter Month for report.
     #' @param metric_filter Metric for report.
@@ -59,22 +70,24 @@ BusinessLogic <- R6::R6Class(
       metric_filter,
       threshold
     ) {
+      
+      carrier_code <- self$unique_carriers %>%
+        dplyr::filter(name == carrier_filter) %>%
+        dplyr::pull(carrier)
+
       filtered_data <- self$data %>%
         dplyr::filter(
-          carrier == carrier_filter,
+          carrier == carrier_code,
           month == month_filter,
           .data[[metric_filter]] >= 0
         ) %>%
         dplyr::group_by(day) %>%
         dplyr::summarize(metric = mean(.data[[metric_filter]], na.rm = TRUE))
       
-      month <- self$months %>%
-        dplyr::filter(month_number == month_filter) %>%
-        dplyr::pull(month_name)
+      month <- self$months[month_filter] %>%
+        names()
       
-      carrier <- self$unique_carriers %>%
-        dplyr::filter(carrier == carrier_filter) %>%
-        dplyr::pull(name)
+      carrier <- carrier_filter
       
       
       number_of_days <- filtered_data %>%
@@ -116,7 +129,7 @@ BusinessLogic <- R6::R6Class(
 ```{r examples-business_logic}
 business_logic <- BusinessLogic$new()
 
-business_logic$generate_results("9E", 1, "arr_delay", 30)
+business_logic$generate_results("Endeavor Air", 1, "arr_delay", 30)
 
 business_logic$results$title
 
@@ -130,7 +143,7 @@ test_that("business_logic works", {
   
   business_logic <- BusinessLogic$new()
   
-  business_logic$generate_results("9E", 1, "arr_delay", 30)
+  business_logic$generate_results("Endeavor Air", 1, "arr_delay", 30)
   
   expect_s3_class(business_logic, "R6")
   
@@ -146,7 +159,7 @@ test_that("business_logic works", {
   
   vdiffr::expect_doppelganger("Results chart 1", business_logic$results$chart)
   
-  business_logic$generate_results("UA", 7, "dep_delay", 12)
+  business_logic$generate_results("United Air Lines", 7, "dep_delay", 12)
   
   expect_identical(business_logic$results$text,
     "In July United Air Lines had 30 days with departures delayed by more than 12 minutes.")
@@ -162,6 +175,6 @@ test_that("business_logic works", {
 fusen::inflate(
   flat_file = "dev/flat_business-logic.Rmd",
   vignette_name = NA,
-  check = TRUE
+  check = FALSE
 )
 ```

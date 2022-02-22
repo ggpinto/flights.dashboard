@@ -2,9 +2,9 @@
 % Please edit documentation in R/businesslogic.R
 \name{BusinessLogic}
 \alias{BusinessLogic}
-\title{R6 Class for the business logic of the app}
+\title{Business logic of the app}
 \description{
-It does the data cleaning and generates text and chart for the app.
+Responsible for the data wrangling, generation of text and charts and (it might be a bit of overkill in this app) filtering for the user interface. See [Using R6 as data storage](https://engineering-shiny.org/common-app-caveats.html#using-r6-as-data-storage) for more information on this solution.
 }
 \examples{
 
@@ -14,7 +14,7 @@ It does the data cleaning and generates text and chart for the app.
 
 business_logic <- BusinessLogic$new()
 
-business_logic$generate_results("9E", 1, "arr_delay", 30)
+business_logic$generate_results("Endeavor Air", 1, "arr_delay", 30)
 
 business_logic$results$title
 
@@ -25,15 +25,15 @@ business_logic$results$chart
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
-\item{\code{months}}{Month numbers and their names.}
+\item{\code{months}}{Month numbers and their names, on the app selecting the month's name will return the month's number.}
 
-\item{\code{metrics}}{Available metrics.}
+\item{\code{metrics}}{Available metrics with better looking names for the app.}
 
-\item{\code{data}}{Will store the data..}
+\item{\code{data}}{Will store the data (more useful for bigger apps).}
 
-\item{\code{unique_carriers}}{Available carriers.}
+\item{\code{unique_carriers}}{Available carriers (more useful in the case of a database with more carriers being added over time).}
 
-\item{\code{results}}{Where results are stored.}
+\item{\code{results}}{Where results (title and text for the page and the chart itself) are stored.}
 }
 \if{html}{\out{</div>}}
 }
@@ -61,7 +61,7 @@ A new `BusinessLogic` object.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{business_logic <- BusinessLogic$new()
 
-business_logic$generate_results("9E", 1, "arr_delay", 30)
+business_logic$generate_results("Endeavor Air", 1, "arr_delay", 30)
 
 business_logic$results$title
 
@@ -78,7 +78,7 @@ business_logic$results$chart
 \if{html}{\out{<a id="method-generate_results"></a>}}
 \if{latex}{\out{\hypertarget{method-generate_results}{}}}
 \subsection{Method \code{generate_results()}}{
-Generate results.
+Generate results, all parameters come directly from the user interface of the app.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BusinessLogic$generate_results(
   carrier_filter,

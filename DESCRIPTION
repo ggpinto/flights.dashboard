@@ -6,8 +6,7 @@ Authors@R:
 Description: Using {golem}, {fusen} and {shinydashboard} to create a
     dashboard based on a post by Emily Riederer.
 License: MIT + file LICENSE
-URL: https://github.com/ggpinto/flights.dashboard,
-    https://ggpinto.github.io/flights.dashboard/
+URL: https://github.com/ggpinto/flights.dashboard
 BugReports: https://github.com/ggpinto/flights.dashboard/issues
 Imports: 
     R6,
@@ -20,14 +19,14 @@ Imports:
     magrittr,
     nycflights13,
     purrr,
-    rlang,
     shiny (>= 1.7.1),
     shinydashboard,
     shinyjs,
     stringr,
-    thematic,
-    tibble
+    thematic
 Suggests: 
+    rmarkdown,
+    knitr,
     spelling,
     testthat (>= 3.0.0),
     vdiffr
@@ -36,3 +35,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 RoxygenNote: 7.1.2
+VignetteBuilder: knitr

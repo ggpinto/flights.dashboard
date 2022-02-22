@@ -7,7 +7,6 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-#' @importFrom gargoyle trigger
 mod_filters_ui <- function(id) {
   ns <- NS(id)
   tagList(
@@ -19,7 +18,7 @@ mod_filters_ui <- function(id) {
     selectInput(
       ns("month"),
       "Month:",
-      choices = month.name
+      choices = NULL
     ),
     selectInput(
       ns("metric"),
@@ -42,7 +41,7 @@ mod_filters_ui <- function(id) {
 }
 
 #' filters Server Functions
-#' @importFrom rlang .data
+#' @importFrom gargoyle trigger
 #' @noRd
 mod_filters_server <- function(id, r6) {
   moduleServer(id, function(input, output, session) {
@@ -54,27 +53,32 @@ mod_filters_server <- function(id, r6) {
     )
 
     updateSelectInput(
+      inputId = "month",
+      choices = r6$months
+    )
+
+    updateSelectInput(
       inputId = "metric",
       choices = r6$metrics
     )
 
 
     observeEvent(
-      c(input$carrier, input$month, input$metric, input$threshold),
+      c(
+        input$carrier,
+        input$month,
+        input$metric,
+        input$threshold
+      ),
       {
         trigger("changed_filters")
       }
     )
 
     observeEvent(input$render_report, {
-
       r6$generate_results(
-        carrier_filter = r6$unique_carriers %>%
-          dplyr::filter(.data$name == input$carrier) %>%
-          dplyr::pull(.data$carrier),
-        month_filter = r6$months %>%
-          dplyr::filter(.data$month_name == input$month) %>%
-          dplyr::pull(.data$month_number),
+        carrier_filter = input$carrier,
+        month_filter = as.numeric(input$month),
         metric_filter = input$metric,
         threshold = input$threshold
       )
@@ -88,4 +92,4 @@ mod_filters_server <- function(id, r6) {
 # mod_filters_ui("filters_1")
 
 ## To be copied in the server
-# mod_filters_server("filters_1")
+# mod_filters_server("filters_1", r6)

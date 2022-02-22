@@ -38,6 +38,9 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
+  <a class="nav-link" href="articles/flights-dashboard.html">Get started</a>
+</li>
+<li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
 <li class="nav-item">
@@ -65,7 +68,26 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="flightsdashboard">flights.dashboard<a class="anchor" aria-label="anchor" href="#flightsdashboard"></a>
 </h1></div>
-<p><img src="C:/Users/pinto/Documents/git/flights.dashboard/figs/sunrise-19-freepsdbazaar.jpg" width="100%" style="display: block; margin: auto;"></p>
+<!-- badges: start -->
+
+<p>The goal of flights.dashboard is to apply some of what is explained on the fantastic book <a href="https://engineering-shiny.org/" class="external-link">Engineering Production-Grade Shiny Apps</a> by Colin Fay, Sébastien Rochette, Vincent Guyader and Cervan Girard, using as basis the post <a href="https://emilyriederer.netlify.app/post/shiny-modules/" class="external-link">A beginner’s guide to Shiny modules</a> by Emily Riederer.</p>
+<div class="section level2">
+<h2 id="result">Result<a class="anchor" aria-label="anchor" href="#result"></a>
+</h2>
+<p>The end result can be seen on <a href="https://ggpinto.shinyapps.io/flights/" class="external-link uri">https://ggpinto.shinyapps.io/flights/</a>.</p>
+<p>If you want you can also install the the application from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ggpinto/flights.dashboard"</span><span class="op">)</span></code></pre></div>
+<p>And then run it locally with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">flights.dashboard</span><span class="fu">::</span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that the flights.dashboard project is released with a <a href="https://ggpinto.github.io/flights.dashboard/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
@@ -104,7 +126,12 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>

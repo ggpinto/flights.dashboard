@@ -25,7 +25,7 @@ golem::fill_desc(
   author_first_name = "Guilherme", # Your First Name
   author_last_name = "Pinto", # Your Last Name
   author_email = "glhrm@pm.me", # Your Email
-  repo_url = NULL # The URL of the GitHub Repo (optional)
+  repo_url = "https://github.com/ggpinto/flights.dashboard" # The URL of the GitHub Repo (optional)
 )
 
 ## Set {golem} options ----

@@ -1,0 +1,35 @@
+---
+title: "How this app/package was created?"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{flights-dashboard}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Design
+
+## Prototype
+
+## Build, strengthen and optimize
+
+## Deploy
+
+Deploying with {golem} and shinyapps.io is very straightforward, just run:
+
+```{r, eval = FALSE}
+golem::add_shinyappsio_file()
+```
+
+and then, assuming that {rsconnect} is already configured: 
+
+```{r, eval = FALSE}
+rsconnect::deployApp()
+```

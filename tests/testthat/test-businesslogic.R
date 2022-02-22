@@ -4,7 +4,7 @@ test_that("business_logic works", {
   
   business_logic <- BusinessLogic$new()
   
-  business_logic$generate_results("9E", 1, "arr_delay", 30)
+  business_logic$generate_results("Endeavor Air", 1, "arr_delay", 30)
   
   expect_s3_class(business_logic, "R6")
   
@@ -20,7 +20,7 @@ test_that("business_logic works", {
   
   vdiffr::expect_doppelganger("Results chart 1", business_logic$results$chart)
   
-  business_logic$generate_results("UA", 7, "dep_delay", 12)
+  business_logic$generate_results("United Air Lines", 7, "dep_delay", 12)
   
   expect_identical(business_logic$results$text,
     "In July United Air Lines had 30 days with departures delayed by more than 12 minutes.")
